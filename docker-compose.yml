@@ -1,0 +1,16 @@
+# @format
+
+services:
+  date:
+    image: aarusin/result-date
+    build:
+      dockerfile: date.dockerfile
+  result:
+    image: aarusin/result
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - date
